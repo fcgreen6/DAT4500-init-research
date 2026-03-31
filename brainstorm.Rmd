@@ -9,22 +9,21 @@ output: md_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Initial Research
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+- **Redistricting Status:**
+  - Missouri: Governor Mike Kehoe signed new map into law on September 28, 2025.
+  - New York: Litigation ongoing. Redistricting is not guaranteed.
+  
+- **Redistricting Reasoning:**
+  - Missouri: Voluntarily redistricted.
+  - New York: Redistricting potential due to litigation.
+  
+- **Sources:**
+  - <https://ballotpedia.org/Redistricting_in_New_York_ahead_of_the_2026_elections>
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
+## Temp Plot
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
