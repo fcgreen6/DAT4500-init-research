@@ -7,6 +7,10 @@ output: md_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(alarmdata)
+library(redist)
+library(ggredist)
 ```
 
 ## Initial Research
@@ -19,11 +23,43 @@ knitr::opts_chunk$set(echo = TRUE)
   - Missouri: Voluntarily redistricted.
   - New York: Redistricting potential due to litigation.
   
-- **Sources:**
+- **Source:**
   - <https://ballotpedia.org/Redistricting_in_New_York_ahead_of_the_2026_elections>
 
-## Temp Plot
+## Basic Missouri District Map
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+- I confirmed that I generated the correct map with this website: <https://www.zipdatamaps.com/politics/national/districts/map-of-missouri-congressional-districts>.
+
+```{r init_missouri, echo=FALSE, warning=F}
+map_mo <- alarm_50state_map('MO')
+plans_mo <- alarm_50state_plans('MO')
+
+map_mo |> 
+  ggplot() +
+  geom_district(aes(group = cd_2020, fill = ndv, denom = nrv + ndv)) +
+  scale_fill_party_c() +
+  theme_map()
 ```
+
+## Basic New York District Map
+
+- I confirmed that I generated the correct map with this website: <https://www.zipdatamaps.com/politics/national/districts/map-of-new-york-congressional-districts>.
+
+- This appears to be be New York's current congressional boundaries. I need to do more research to figure out how to make a map of the proposed congressional boundaries. This is a comparison of the different boundaries that I found: <https://nyirc.gov/congressional-plan-2024>.
+
+```{r init_ny, echo=FALSE, warning=F}
+map_ny <- alarm_50state_map('NY')
+plans_ny <- alarm_50state_plans('NY')
+
+map_ny |> 
+  ggplot() +
+  geom_district(aes(group = cd_2020, fill = ndv, denom = nrv + ndv)) +
+  scale_fill_party_c() +
+  theme_map()
+```
+
+## Questions
+
+- How can we create a system to efficiently compare different historical congressional boundaries in our states? Is such a system necessary for this project?
+
+- What questions is our project trying to answer?
